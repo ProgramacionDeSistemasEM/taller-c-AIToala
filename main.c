@@ -28,8 +28,46 @@ int main(int argc, char **argv){
 	float sum = 0.0f;
 	float max_imc = 0.0f;
 	
+	float data[elementos];
+
+	if(elementos<=0){
+		printf("Numero de personas invalido\n");
+		exit(1);
+	}
+	for(int i=0; i<elementos;i++){
+		printf("Peso: ");
+
+		char buf1[10] ={0};
+		fgets(buf1,10,stdin);
+		float peso = atof(buf1);
+
+		if(peso<0){
+			printf("Numero invalido\n");
+			exit(1);
+		}
+		printf("Altura: ");
+		
+		char buf[10] ={0};
+		fgets(buf,10,stdin);
+		float altura = atof(buf);
+
+		if(altura<0){
+			printf("Numero invalido\n");
+			exit(1);
+		}
+		printf("\n");
+		float imc;
+		imc = peso / (altura * altura);
+		sum += imc;
+		data[i] = imc; 
+	}
 	
-	
+	for (int i=0; i<elementos;i++){
+		if(data[i] > max_imc){
+			max_imc = data[i];
+		}
+	}
+	sum = sum / elementos;
 	
 	//No modifique estas lineas
 	//Guarde los resultados en las 
